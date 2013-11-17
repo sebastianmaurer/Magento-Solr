@@ -1,0 +1,348 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @category  DMC
+ * @package   DMC_Solr
+ * @author     Team Magento <magento@digitalmanufaktur.com>
+ * @version    0.9.0
+ *
+ */
+ -->
+
+<config>
+    <sections>
+        <solr translate="label comment" module="solr">
+            <tab>general</tab>
+            <label>Solr</label>
+            <frontend_type>text</frontend_type>
+            <sort_order>1200</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <general translate="label comment" module="solr">
+                    <label>General Options</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>10</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <enable translate="label">
+                            <label>Solr Searcher Enable</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enable>
+
+                        <server_url translate="label">
+                            <label>Solr Server Url</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Enter without protocol (http or anything else)</comment>
+                        </server_url>
+
+                        <server_api_url translate="label">
+                            <label>Solr Management API Url</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>25</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </server_api_url>
+
+                        <ping translate="label">
+                            <label>Ping Solr Server</label>
+                            <frontend_type>button</frontend_type>
+                            <frontend_model>DMC_Solr_Block_Adminhtml_System_Buttons_Ping</frontend_model>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </ping>
+
+                        <sync_config translate="label">
+                            <label>Update Config to Solr Server</label>
+                            <frontend_type>button</frontend_type>
+                            <frontend_model>DMC_Solr_Block_Adminhtml_System_Buttons_SyncConfig</frontend_model>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </sync_config>
+
+                        <enable_on_catalog translate="label">
+                            <label>Enable Solr on catalog</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>31</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enable_on_catalog>
+
+                        <enable_on_search_result translate="label">
+                            <label>Enable Solr on search result</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>32</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enable_on_search_result>
+
+                        <debug translate="label comment">
+                            <label>Debug mode</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Add solr requests to the magento profiler</comment>
+                        </debug>
+                        <log translate="label">
+                            <label>Add Information To Log</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Add activity will be added to the "/var/log/solr.log" file.</comment>
+                        </log>
+                    </fields>
+                </general>
+                <indexer translate="label comment" module="solr">
+                    <label>Indexer Options</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>20</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <reload translate="label">
+                            <label>Reload Core</label>
+                            <frontend_type>button</frontend_type>
+                            <frontend_model>DMC_Solr_Block_Adminhtml_System_Buttons_Reload</frontend_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </reload>
+                        <!--
+                        <extra_index translate="label">
+                            <label>Enter Store-IDs which should get their own index (and not search base data)</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>15</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment></comment>
+                        </extra_index>
+                        -->
+                        <product_update translate="label">
+                            <label>Update Solr Index of Products</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </product_update>
+                        <cms_update translate="label">
+                            <label>Update Solr Index of CMS Pages</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </cms_update>
+                        <categorie_update translate="label">
+                            <label>Update Solr Index of Categories</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>25</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </categorie_update>
+                        <clear translate="label">
+                            <label>Clear Indexes</label>
+                            <frontend_type>button</frontend_type>
+                            <frontend_model>DMC_Solr_Block_Adminhtml_System_Buttons_Clear</frontend_model>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </clear>
+                        <!--
+                        <particular_reindexation translate="label">
+                            <label>Particular Reindexation</label>
+                            <frontend_type>button</frontend_type>
+                            <frontend_model>DMC_Solr_Block_Adminhtml_System_Buttons_Partreindex</frontend_model>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </particular_reindexation>
+                        -->
+                    </fields>
+                </indexer>
+                <searcher translate="label comment" module="solr">
+                    <label>Searcher Options</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>30</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                       
+                    </fields>
+                </searcher>
+                <spellcheck_flag translate="label comment" module="solr">
+                    <label>Spellcheck</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>40</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <spellcheck translate="label">
+                            <label>Spellcheck</label>
+                            <source_model>solr/Catalogsearch_spellcheck</source_model>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </spellcheck>
+                    </fields>
+                </spellcheck_flag>
+                <elevate_settings translate="label comment" module="solr">
+                    <label>Boosting</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>50</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <boosting_enable translate="label">
+                            <label>Attribute Boosting</label>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </boosting_enable>
+                        <boosting_attribute translate="label">
+                            <label>Solr Field to boost</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </boosting_attribute>
+                        <sort_order translate="label">
+                            <label>Sort Order</label>
+                            <source_model>solr/Catalogsearch_boosting</source_model>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </sort_order>
+                    </fields>
+                </elevate_settings>
+                <catalog_navigation translate="label comment" module="solr">
+                    <label>Filter Panel</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>55</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <allow_multiselect translate="label">
+                            <label>Allow Multiselect</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </allow_multiselect>
+                        <display_filter_item_count translate="label">
+                            <label>Display Filter Item Count</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </display_filter_item_count>
+                        <show_categories translate="label">
+                            <label>Display Categories</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </show_categories>
+                    </fields>
+                </catalog_navigation>
+                <synonyms_settings translate="label comment" module="solr">
+                    <label>Synonyms</label>
+                    <frontend_type>file</frontend_type>
+                    <sort_order>60</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <synonyms_file translate="label">
+                            <label>Synonyms File</label>
+                            <frontend_type>file</frontend_type>
+                            <backend_model>adminhtml/system_config_backend_file</backend_model>
+                            <upload_dir config="system/filesystem/var" scope_info="1">solr/synonyms</upload_dir>
+                            <base_url type="var" scope_info="1">solr/synonyms</base_url>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </synonyms_file>
+                    </fields>
+                </synonyms_settings>
+                <stopword_settings translate="label comment" module="solr">
+                    <label>Stopwords</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>70</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <stopwords_file translate="label">
+                            <label>Stopwords File</label>
+                            <frontend_type>file</frontend_type>
+                            <backend_model>adminhtml/system_config_backend_file</backend_model>
+                            <upload_dir config="system/filesystem/var" scope_info="1">solr/stopwords</upload_dir>
+                            <base_url type="var" scope_info="1">solr/stopwords</base_url>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </stopwords_file>
+                    </fields>
+                </stopword_settings>
+            </groups>
+        </solr>
+    </sections>
+</config>
+

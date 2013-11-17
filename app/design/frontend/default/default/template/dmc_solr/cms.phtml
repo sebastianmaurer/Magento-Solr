@@ -1,0 +1,7 @@
+<?php $pages = $this->getPages(); ?>
+<h2><?php echo $this->__('gefundene Seiten'); ?></h2>
+<ul>
+<?php foreach($pages as $page): ?>
+    <li><a href="<?php echo Mage::helper('cms/page')->getPageUrl($page->getId());?>"><?php echo $page->getTitle();?></a></li>
+<?php endforeach; ?>
+</ul>

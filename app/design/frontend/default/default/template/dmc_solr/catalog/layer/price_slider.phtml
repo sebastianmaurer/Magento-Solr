@@ -1,0 +1,77 @@
+
+<?php
+	$attribute 		= $this->getAttributeModel();
+	$attribute_code = $attribute->getAttributeCode();
+	$request		= $this->getRequest();
+	
+        $value = $request->getParam($attribute_code);
+        $valueIsSet = false;
+        if ($value) {
+            $t = preg_split('/-/', $value);
+            if (count($t) == 2) {
+                $_from = $t[0];
+                $_to = $t[1];
+                if (!strlen($_from)) {
+                    $_from = $this->_filter->getData('min_price_int');
+                }
+                if (!strlen($_to)) {
+                    $_to = $this->_filter->getData('max_price_int');
+                }
+                $valueIsSet = true;
+            }
+        }
+        
+        if (!$valueIsSet) {
+            $_from = $this->_filter->getData('min_price_int');
+            $_to = $this->_filter->getData('max_price_int');
+        }
+        
+	//$_from	= $request->getParam($this->_filter->getRequestVar().'_from', $this->_filter->getData('min_price_int'));
+   	//$_to	= $request->getParam($this->_filter->getRequestVar().'_to', $this->_filter->getData('max_price_int'));
+        $submitUrl = $this->sliderGetUrl();
+?>
+
+<div class="filter-type-input hidden">	
+    <form onsubmit="submitNavigationForm(this, '<?php echo $submitUrl;?>')" id="<?php echo $attribute_code?>-filter-form">
+        <fieldset class="filter-fieldset">
+            <div class="from-wrapper">
+                <label><span><?php echo $this->__('From')?></span><input class="price-from" type="text" name="<?php echo $attribute_code;?>_from" value="<?php echo $_from;?>" /></label>
+            </div>
+		
+            <div class="from-wrapper">
+                <label><span><?php echo $this->__('To')?></span><input class="price-to" type="text" name="<?php echo $attribute_code;?>_to" value="<?php echo $_to;?>" /></label>
+            </div>
+        </fieldset>
+    </form>
+</div>
+
+<div id="<?php echo $attribute_code;?>-track" class="gan-track" style="padding-bottom:10px;">
+    <div id="<?php echo $attribute_code;?>-handle-from" class="handle handle-left">
+        <span class="handle-left-bg">
+            <span class="slider-span">
+                <span id="<?php echo $attribute_code;?>-value-from"><?php echo $_from; ?></span>
+            </span>
+        </span>
+    </div>
+    <div id="<?php echo $attribute_code;?>-handle-to" class="handle handle-right">
+        <span class="handle-right-bg">
+            <span class="slider-span">
+                <span id="<?php echo $attribute_code;?>-value-to"><?php echo $_to; ?></span>
+            </span>
+        </span>
+    </div>
+    <div class="slider-back-bg"></div>
+    <div id="<?php echo $attribute_code;?>-square_slider_span" class="span" style="position:absolute;">
+        <div class="gan-slider-span"></div>
+    </div>
+</div>
+<div class="hidden" id='<?php echo $attribute_code;?>-value'></div>
+
+<script type="text/javascript">
+// <![CDATA[
+    initSlider('<?php echo $attribute_code;?>', <?php echo $this->_filter->getData('min_price_int');?>, <?php echo $this->_filter->getData('max_price_int');?>, <?php echo $_from;?>, <?php echo $_to;?>, '<?php echo $submitUrl;?>');
+    Event.observe(window, "resize", function() { 
+        initSlider('<?php echo $attribute_code;?>', <?php echo $this->_filter->getData('min_price_int');?>, <?php echo $this->_filter->getData('max_price_int');?>, <?php echo $_from;?>, <?php echo $_to;?>, '<?php echo $submitUrl;?>');
+    });
+// ]]>
+</script>

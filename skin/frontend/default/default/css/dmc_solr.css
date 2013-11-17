@@ -1,0 +1,167 @@
+@CHARSET "UTF-8";
+
+/* DEMO CSS */
+.solr-search-promotion { padding: 10px; border:1px solid red; }
+
+
+.selected-filter-item a
+{
+    color: green !important;
+    font-weight: bold !important;
+}
+
+.filter-content a
+{
+    font-weight:normal;
+}
+
+
+.block-layered-nav .hidden{display:block !important; border:0 !important; margin:0 !important; padding:0 !important; font-size:0 !important; line-height:0 !important; width:0 !important; height:0 !important; overflow:hidden !important; }
+
+/* Slider View */
+#narrow-by-list .handle-left{
+	width:9px;
+	height:21px;
+	position:absolute;
+	z-index:11;
+}
+#narrow-by-list .handle-right{
+	width:9px;
+	height:21px;
+	position:absolute;
+	z-index:11;
+}
+#narrow-by-list .handle-left .handle-left-bg{
+	display:block;
+	background:#ccc;
+	background-repeat:no-repeat;
+	width:9px;
+	height:21px;
+	cursor:pointer;
+	position:relative;
+	/*left:-14px;*/
+    left:0;
+}
+#narrow-by-list .handle-right .handle-right-bg{
+	display:block;
+	background:#ccc;
+	background-repeat:no-repeat;
+	width:9px;
+	height:21px;
+	cursor:pointer;
+	position:relative;
+}
+#narrow-by-list .handle-left .handle-left-bg span.slider-span,
+#narrow-by-list .handle-right .handle-right-bg span.slider-span{
+	position:absolute;
+	top:20px;
+	left:50%;
+	display:block;
+	width:45px;
+}
+#narrow-by-list .handle-left .handle-left-bg span.slider-span span,
+#narrow-by-list .handle-right .handle-right-bg span.slider-span span{
+	position:absolute;
+	left:-50%;
+	display:block;
+	width:45px;
+	text-align:center;
+}
+#narrow-by-list .gan-track{
+	/*background-image:#333;*/
+        width:89%;
+	height:28px;
+	position:relative;
+	left:14px;
+}
+#narrow-by-list .gan-slider-span{
+	background:blue;
+	height:4px;
+	top:10px;
+	position:relative;
+	z-index:10;
+}
+#narrow-by-list .slider-back-bg{
+	background:#bfbfbf;
+	height:4px;
+	/*left:-5px;*/
+	position:relative;
+	top:10px;
+	/*width:95%;*/
+        width:99%;
+	z-index:9;
+}
+#narrow-by-list .gan-track div.span{
+	top:1px;
+	height:20px;
+	overflow:hidden;
+	z-index:10;
+}
+/* Slider View END */
+
+/* Slider Type */
+
+#narrow-by-list .slider-back-bg,
+#narrow-by-list .gan-slider-span{
+	height:3px;
+	top:8px;
+	overflow:hidden;
+}
+#narrow-by-list .handle-left .handle-left-bg,
+#narrow-by-list .handle-right .handle-right-bg,
+#narrow-by-list .handle-left,
+#narrow-by-list .handle-right{
+	height:15px;
+	width:8px;
+}
+#narrow-by-list .handle-right .handle-right-bg,
+#narrow-by-list .handle-right .handle-right-bg{
+	left:0;
+}
+#narrow-by-list .handle-left .handle-left-bg span.slider-span,
+#narrow-by-list .handle-right .handle-right-bg span.slider-span{
+	top:13px;
+}
+
+#narrow-by-list .handle-left .handle-left-bg,
+#narrow-by-list .handle-right .handle-right-bg{
+	background:transparent url(../images/slider-handle.gif) no-repeat 0 0 !important;
+        top: 5px;
+}
+/* Slider Type END */
+
+
+
+/* Clears */
+#narrow-by-list .filter-fieldset .fields:after,
+.gan-wrapper:after{
+	content:' ';
+	clear:both;
+	display:block;
+	width:0; 
+	height:0;
+	overflow:hidden;
+	font-size:0;
+}
+#narrow-by-list .filter-fieldset .fields{
+	zoom:1;
+}
+
+#narrow-by-list .gan-slider-span {
+    background: none repeat scroll 0 0 #023B58;
+    height: 4px;
+}
+#narrow-by-list .slider-back-bg {
+    background: none repeat scroll 0 0 #CCCCCC;
+    border: 1px solid #023B58;
+    /*left: -8px;*/
+}
+
+#price-value-from:before, #price-value-to:before {
+    content: "€";
+}
+
+#price-value-from, #price-value-to {
+    color: #3A3A3A;
+    font: 12px/1.5 Arial,Helvetica,sans-serif;
+}

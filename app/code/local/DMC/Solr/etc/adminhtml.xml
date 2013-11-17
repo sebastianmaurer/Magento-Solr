@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<config>
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+		                            <dmc_solr_landigpage>
+		                                <title>Manage Landing Pages</title>
+		                                <sort_order>10</sort_order>
+		                            </dmc_solr_landigpage>
+		                            <dmc_solr_synonyms>
+		                                <title>Dictionary of synonyms</title>
+		                                <sort_order>20</sort_order>
+		                            </dmc_solr_synonyms>
+		                            <dmc_solr_stopwords>
+		                                <title>Dictionary of stopwords</title>
+		                                <sort_order>30</sort_order>
+		                            </dmc_solr_stopwords>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                    <dmc_solr>
+                        <title>Solr</title>
+                        <sort_order>70</sort_order>
+                        <children>
+                        </children>
+                    </dmc_solr>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+    <menu>
+        <dmc_solr module="solr">
+            <title>Solr</title>
+            <sort_order>85</sort_order>
+            <children>
+                <dmc_solr_landingpage module="solr">
+                    <title>Manage Landingpages</title>
+                    <sort_order>10</sort_order>
+                    <action>solr/adminhtml_landingpage/index</action>
+                </dmc_solr_landingpage>
+                <dmc_solr_synonyms module="solr">
+                    <title>Manage Synonyms</title>
+                    <sort_order>20</sort_order>
+                    <action>solr/adminhtml_synonym/index</action>
+                </dmc_solr_synonyms>
+                <dmc_solr_stopwords module="solr">
+                    <title>Manage Stopwords</title>
+                    <sort_order>30</sort_order>
+                    <action>solr/adminhtml_stopword/index</action>
+                </dmc_solr_stopwords>
+                <dmc_solr_promotion module="solr">
+                    <title>Manage Promotions</title>
+                    <sort_order>40</sort_order>
+                    <action>solr/adminhtml_promotion/index</action>
+                </dmc_solr_promotion>
+                <dmc_solr_reindex module="solr">
+                    <title>Re-Index</title>
+                    <action>adminhtml/process/list</action>
+                    <sort_order>50</sort_order>
+                </dmc_solr_reindex>
+                 <dmc_solr_settings module="solr">
+                    <title>Settings</title>
+                    <action>adminhtml/system_config/edit/section/solr</action>
+                    <sort_order>100</sort_order>
+                </dmc_solr_settings>
+            </children>
+        </dmc_solr>
+    </menu> 
+</config>

@@ -1,0 +1,63 @@
+<div class="solr-part-reind-popup-container">
+    <div id="solr_part_reind_popup_content" style="display: none;">
+        <div class="content-header">
+            <h3><?php echo $this->__('Solr Partial Reindexation')?></h3>
+        </div>
+        <div class="content">
+            <div class="item-label"><?php //echo $this->__('Store')?></div>
+            <div class="item-element">
+                <div class="switcher">
+                    <select id="solr-store_switcher" class="system-config-store-switcher" name="solr-store-id">
+                    <?php foreach ($this->getStoreSelectOptions() as $_value => $_option): ?>
+                        <?php if (isset($_option['is_group'])): ?>
+                            <?php if ($_option['is_close']): ?>
+                                </optgroup>
+                            <?php else: ?>
+                                <optgroup label="<?php echo $this->escapeHtml($_option['label']) ?>" style="<?php echo $_option['style'] ?>">
+                            <?php endif; ?>
+                            <?php continue ?>
+                        <?php endif; ?>
+                        <option value="<?php echo $this->escapeHtml($_value) ?>" style="<?php echo $_option['style'] ?>">
+                            <?php echo $this->escapeHtml($_option['label']) ?>&nbsp;(id: <?php echo $_value; ?>)
+                        </option>
+                    <?php endforeach ?>
+                    </select>
+                </div>
+            </div>
+            <div class="item-label"></div>
+            <div class="item-element">
+                <button style="" onclick="solrReindexStore(this)" class="scalable <?php if ($this->solrIndexingIsInProcess()) echo 'disabled' ?>" type="button" title="<?php echo $this->__('Reindex')?>"><span><span><span id="solr-part-reindex-button-label"><?php echo $this->solrIndexingIsInProcess() ? $this->__('In process...') :  $this->__('Reindex')?></span></span></span></button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+//<![CDATA[
+jQuery(window).load(function() {
+            jQuery("#solr-part-reind-popup-link").fancybox({
+                fitToView   : false,
+                /*width       : 800,
+                height      : 600,*/
+                autoSize    : true,
+                /*closeClick  : false,*/
+                /*openEffect  : 'none',
+                closeEffect : 'none',*/
+                scrolling   : 'no'/*,
+                closeBtn : false,
+                wrapCSS: 'fancy-correct-size-popup'*/
+            });
+});
+var partReindexationIsInProcess = <?php echo $this->solrIndexingIsInProcess() ? "true" : "false"; ?>;
+function solrReindexStore(element) {
+    if (partReindexationIsInProcess) return;
+    partReindexationIsInProcess = true;
+    element = $(element);
+    element.addClassName('disabled');
+    $('solr-part-reindex-button-label').innerHTML = "<?php echo $this->__('In process...') ?>"
+    window.location.href = "<?php echo $this->getSolrPartReindexUrl(); ?>" + "solrStoreReindex/" + $('solr-store_switcher').value;
+}
+
+//]]>
+</script>

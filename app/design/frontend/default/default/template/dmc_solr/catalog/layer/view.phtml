@@ -1,0 +1,29 @@
+<?php
+    $solrHelper = Mage::helper('solr');
+?>
+L-NAV
+<?php if($this->canShowBlock()): ?>
+<div class="block block-layered-nav">
+    <?php if ($solrHelper && !$solrHelper->catalogCategoryMultiselectEnabled()): ?>
+        <?php echo $this->getStateHtml() ?>
+    <?php endif;?>
+    <?php if ($this->getLayer()->getState()->getFilters()): ?>
+        <div class="actions"><a href="<?php echo $this->getClearUrl() ?>"><?php echo $this->__('Clear All') ?></a></div>
+    <?php endif; ?>
+    <?php if($this->canShowOptions()): ?>
+        <div id="narrow-by-list">
+            <?php $_filters = $this->getFilters() ?>
+            <?php foreach ($_filters as $_filter): ?>
+            <?php if($_filter->getItemsCount()): ?>
+                <div class="block-content">
+                    <h5 class="filter-title">Mit <?php echo $this->__($_filter->getName()) ?> eingrenzen</h5>
+                    <div class="filter-content"><?php echo $_filter->getHtml() ?></div>
+                </div>
+                <div class="red-spacer-3"></div>
+            <?php endif; ?>
+            <?php endforeach; ?>
+        </div>
+        <script type="text/javascript">decorateDataList('narrow-by-list')</script>
+    <?php endif; ?>
+</div>
+<?php endif; ?>

@@ -1,0 +1,62 @@
+<?php 
+/**
+ * Apache Solr Search Engine for Magento
+ *
+ * @category  DMC
+ * @package   DMC_Solr
+ * @author    Team Magento <magento@digitalmanufaktur.com>
+ * @version   0.1.6
+ */
+?>
+<?php
+    $_collection     = $this->getResultCollection();
+    $_iterator = 0;
+    $_align = "left";
+    $_size = sizeof($_collection);
+    $_mapping = false;
+    $_first = true;
+    $_firstStyle = "no-border";
+    
+    if(!empty($_collection->mapping))
+    {
+        $_mapping = true;
+    }
+    
+?>
+<div class="listing-type-list catalog-listing">
+<?php foreach ($_collection as $_item): ?>
+    <?php 
+    if($_first == true){ $_first = false;}
+        if($_align == "left") echo "<div class='listing-item-divider {$_firstStyle}'></div>";
+        if($_mapping)
+        {
+            foreach($_collection->mapping as $key => $field)
+            {
+                $_item->setData($key, $_item->getData($field));
+            }
+        }
+    ?>
+    <div class="additional-tabs-listing-item listing-item<?php if( ++$_iterator == $_size): ?> last<?php endif; ?> <?php echo $_align; ?>">
+        <div class="additional-tabs-item">
+            <div class="content-top">
+                <div class="name cufon"><?php echo $this->htmlEscape($_item->getTitle())?></div>
+            </div>
+            <div class="manufacturer">
+                <?php echo strip_tags(substr($_item->getContent(),0, 250));?>...
+            </div>
+            <div class="content-bottom">
+            <div class="info-section">
+            
+            </div>
+                <a class="link-more show-more-descr" href="<?php echo Mage::getBaseUrl().$_item->getUrl() ?>"> mehr <span class="arrow">&rsaquo;</span></a>
+            </div>
+        </div>
+    </div>
+    <?php
+        if($_align == "left") { $_align = "right"; } else { $_align = "left"; }
+        $_firstStyle = "";
+    ?>
+<?php endforeach; ?>
+</div>
+<?php echo $this->getToolbarHtml() ?>
+<div style="clear: both"></div>
